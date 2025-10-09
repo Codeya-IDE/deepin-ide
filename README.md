@@ -2,7 +2,7 @@
 
 [![en](https://img.shields.io/badge/lang-en-red.svg)](./README.en.md)
 
-deepin-ide 是一款支持多语言、跨平台兼容特性的轻量级集成开发环境。
+deepin-ide (原名：deepin-unioncode) 是一款支持多语言、跨平台兼容特性的轻量级集成开发环境。
 
 ## 构建依赖
 

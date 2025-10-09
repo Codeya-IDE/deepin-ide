@@ -2,7 +2,7 @@
 
 [![zh](https://img.shields.io/badge/lang-zh-red.svg)](./README.md)
 
-deepin-ide is a lightweight integrated development environment, featured with multilingual and cross platform compatibility.
+deepin-ide (original name：deepin-unioncode) is a lightweight integrated development environment, featured with multilingual and cross platform compatibility.
 
 ## Build dependencies
 
