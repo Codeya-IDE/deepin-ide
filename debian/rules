@@ -1,7 +1,14 @@
 #!/usr/bin/make -f
-include /usr/share/dpkg/default.mk
+
 export QT_SELECT=5
 DEB_HOST_MULTIARCH ?= $(shell dpkg-architecture -qDEB_HOST_MULTIARCH)
+
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+export DEB_CFLAGS_MAINT_APPEND = -Wall -fPIE -fstack-protector-strong -D_FORTIFY_SOURCE=1 -fPIC
+export DEB_CXXFLAGS_MAINT_APPEND = -Wall -fPIE -fstack-protector-strong -D_FORTIFY_SOURCE=1 -fPIC
+export DEB_LDFLAGS_MAINT_APPEND = -Wl,--as-needed -Wl,-z,relro -Wl,-z,now -Wl,-z,noexecstack -pie
+
+include /usr/share/dpkg/default.mk
 
 define detect_qt_version
 ifneq (,$(shell which qmake6 2>/dev/null))
