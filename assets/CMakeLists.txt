@@ -11,7 +11,17 @@ if (CMAKE_BUILD_TYPE STREQUAL "Release")
     file(GLOB TS_FILES "translations/*.ts")
     foreach(TS_FILE IN LISTS TS_FILES)
         message(STATUS "process ts file: ${TS_FILE}")
-        find_program(LUPDATE_COMMAND NAMES lupdate lupdate-Qt${QT_VERSION_MAJOR} lupdate-qt4 lupdate-pro)
+        find_program(LUPDATE_COMMAND
+            NAMES
+                lupdate-Qt6
+                lupdate
+                lupdate-qt${QT_VERSION_MAJOR}
+                lupdate-qt4
+                lupdate-pro
+            PATHS
+                /usr/lib/qt6/bin
+                /usr/bin
+        )
         if (NOT LUPDATE_COMMAND)
             message(FATAL_ERROR "lupdate command not found")
         endif()
