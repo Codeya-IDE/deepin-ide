@@ -35,8 +35,6 @@ public slots:
     //mode : MD_EDIT/MD_DEBUG/MD_RECENT
     void raiseMode(const QString &mode);
 
-    //1 Plugi -> 1navName -> n widget(name)
-    void setCurrentPlugin(const QString &plugin);
     void registerWidgetToMode(const QString &name, AbstractWidget *abstractWidget, const QString &mode, Position pos, bool replace, bool isVisible);
     void registerWidget(const QString &name, AbstractWidget *abstractWidget);
     void registerWidgetCreator(const QString &name, std::function<AbstractWidget*()> &widgetCreateFunc);
