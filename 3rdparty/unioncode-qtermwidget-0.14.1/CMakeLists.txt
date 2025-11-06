@@ -35,7 +35,16 @@ find_package(Qt${QT_VERSION_MAJOR}LinguistTools REQUIRED)
 if (${QT_VERSION_MAJOR} MATCHES 6)
     find_package(Qt6Core5Compat REQUIRED)
 endif()
-find_package(lxqt-build-tools ${LXQTBT_MINIMUM_VERSION} REQUIRED)
+# 兼容不同版本的lxqt-build-tools包名
+# 对于高版本系统（如lxqt 2.1.0+），包名为lxqt2-build-tools
+# 对于低版本系统（如lxqt 0.6.0），包名为lxqt-build-tools
+find_package(lxqt2-build-tools ${LXQTBT_MINIMUM_VERSION} QUIET)
+if(lxqt2-build-tools_FOUND)
+    message(STATUS "Found lxqt2-build-tools package")
+else()
+    find_package(lxqt-build-tools ${LXQTBT_MINIMUM_VERSION} REQUIRED)
+    message(STATUS "Found lxqt-build-tools package")
+endif()
 
 if(USE_UTF8PROC)
     find_package(Utf8Proc REQUIRED)
