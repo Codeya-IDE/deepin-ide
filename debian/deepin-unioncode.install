@@ -1,8 +1,8 @@
 /usr/bin/deepin-unioncode
 /usr/share/icons/hicolor/scalable/apps/*.svg
+/usr/share/icons/hicolor/32x32/apps/*.svg
 /usr/share/deepin-unioncode
 /usr/share/deepin-unioncode/configures/*.support
-/usr/share/deepin-unioncode/configures/icons/*.svg
 /usr/share/deepin-unioncode/templates/*
 /usr/share/applications/*.desktop
 /usr/lib/*/deepin-unioncode/lib*.a*
