@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.18.0)
+cmake_minimum_required(VERSION 3.13.0)
 
 project(deepin-unioncode)
 
@@ -18,7 +18,7 @@ if (NOT VERSION)
 endif()
 
 message(STATUS "build version ${VERSION}")
-option(ENABLE_SANITIZE_CHECK "Enable Sanitize Check " OFF) 
+option(ENABLE_SANITIZE_CHECK "Enable Sanitize Check " OFF)
 
 set(CMAKE_VERBOSE_MAKEFILE ON)
 
