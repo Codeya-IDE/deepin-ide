@@ -1,3 +1,10 @@
+deepin-unioncode (1.4.21) unstable; urgency=medium
+
+  * chore: update build dependencies for Qt6 migration
+  * chore: update debian build dependencies
+
+ -- Liu Zhangjian <liuzhangjian@uniontech.com>  Tue, 10 Feb 2026 16:59:00 +0800
+
 deepin-unioncode (1.4.20) unstable; urgency=medium
 
   * chore: remove qt6-multimedia-dev build dependency
