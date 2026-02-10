@@ -21,10 +21,11 @@ private:
     void setLogo();
 
     DTK_WIDGET_NAMESPACE::DLabel *logo { nullptr };
-    DTK_WIDGET_NAMESPACE::DLabel *backgroundLogo { nullptr };
     DTK_WIDGET_NAMESPACE::DLabel *loadingText { nullptr };
     QGraphicsOpacityEffect *opacityEffect { nullptr };
     QTimer timer;
+    float logoOpacity { 1.0 };
+    bool fadeOut { true };
 };
 
 #endif   // LOADINGWIDGET_H

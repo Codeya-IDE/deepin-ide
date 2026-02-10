@@ -8,8 +8,6 @@
 
 DWIDGET_USE_NAMESPACE
 
-static float opacity = 1.0;
-
 loadingWidget::loadingWidget(QWidget *parent)
     : DWidget(parent)
 {
@@ -21,33 +19,36 @@ loadingWidget::loadingWidget(QWidget *parent)
     loadingText->setText(tr("loading..."));
     loadingText->setAlignment(Qt::AlignCenter);
 
-    vlayout->addWidget(backgroundLogo);
+    vlayout->addWidget(logo);
     vlayout->addWidget(loadingText);
     vlayout->setAlignment(Qt::AlignCenter);
 }
 
 void loadingWidget::setLogo()
 {
-    backgroundLogo = new DLabel(this);
-    backgroundLogo->setPixmap(QIcon::fromTheme("deepin_unioncode_backgroundLogo").pixmap(128));
+    logo = new DLabel(this);
+    logo->setPixmap(QIcon::fromTheme("ide").pixmap(128));
+    logo->setAlignment(Qt::AlignCenter);
 
-    logo = new DLabel(backgroundLogo);
-    logo->setPixmap(QIcon::fromTheme("deepin_unioncode_logo").pixmap(128));
+    opacityEffect = new QGraphicsOpacityEffect(logo);
+    logo->setGraphicsEffect(opacityEffect);
 
-    QHBoxLayout *hlayout = new QHBoxLayout;
-    hlayout->addWidget(logo);
-    backgroundLogo->setLayout(hlayout);
-
-    opacityEffect = new QGraphicsOpacityEffect(this);
-
-    connect(&timer, &QTimer::timeout, this, [=]() {
-        opacity -= 0.1;
-
-        if (opacity < -0.9)
-            opacity = 1.0;
-
-        opacityEffect->setOpacity(qAbs(opacity));
-        logo->setGraphicsEffect(opacityEffect);
+    connect(&timer, &QTimer::timeout, this, [this]() {
+        // 透明度在 0.3 到 1.0 之间循环变化，产生呼吸效果
+        if (fadeOut) {
+            logoOpacity -= 0.05;
+            if (logoOpacity <= 0.3) {
+                logoOpacity = 0.3;
+                fadeOut = false;
+            }
+        } else {
+            logoOpacity += 0.05;
+            if (logoOpacity >= 1.0) {
+                logoOpacity = 1.0;
+                fadeOut = true;
+            }
+        }
+        opacityEffect->setOpacity(logoOpacity);
     });
-    timer.start(150);
+    timer.start(50);
 }
