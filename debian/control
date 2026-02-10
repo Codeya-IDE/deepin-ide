@@ -5,7 +5,7 @@ Maintainer: Deepin Packages Builder <packages@linuxdeepin.com>
 Build-Depends:
  debhelper (>=9),
  cmake,
- qt6-qmake,
+ qmake6,
  qt6-base-dev,
  qt6-tools-dev-tools,
  qt6-tools-dev,
@@ -13,7 +13,7 @@ Build-Depends:
  libdtk6widget-dev,
  libdtk6gui-dev,
  libdtk6core-dev,
- libdtk6core5-bin,
+ libdtk6core-bin,
  libkf6syntaxhighlighting-dev,
  qt6-5compat-dev,
  lxqt-build-tools (>= 0.6.0~),
